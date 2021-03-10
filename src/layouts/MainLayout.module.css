@@ -1,3 +1,4 @@
-.main {
-  max-width: "560px";
+.Main {
+  max-width: 560px;
+  margin: auto;
 }
