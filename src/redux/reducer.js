@@ -1,13 +1,22 @@
-import { ADD_TASK_TIMER } from "./actionTypes";
+import { ADD_TASK_TIMER, DELETE_TASK_TIMER } from "./actionTypes";
 
 const initialState = {
   timers: [],
 };
 
-export default function (state = initialState, action) {
-  switch (action.type) {
+export default function (state = initialState, { payload, type }) {
+  switch (type) {
     case ADD_TASK_TIMER:
-      return { ...state.timers.push(action.payload) };
+      console.log({ timers: [...state.timers, payload] });
+      return {
+        ...state,
+        timers: [...state.timers, payload],
+      };
+    case DELETE_TASK_TIMER:
+      return {
+        ...state,
+        timers: state.timers.filter((t) => t.id !== payload.id),
+      };
     default:
       return state;
   }
