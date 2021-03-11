@@ -1,7 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTimer } from "../redux/actions";
+import {
+  addTimer,
+  deleteTimer,
+  setTimers,
+  togglePause,
+} from "../redux/actions";
 import TaskItem from "./TaskItem";
-import { Paper, makeStyles, Typography } from "@material-ui/core";
+import { makeStyles, Typography } from "@material-ui/core";
+import { useEffect } from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,13 +24,17 @@ function TaskList() {
   const timers = useSelector((store) => store.timers);
   const dispatch = useDispatch();
   const classes = useStyles();
+
   return timers.length ? (
     <div className={classes.root}>
-      {timers.map((el, i) => (
+      {timers.map((el) => (
         <TaskItem
           key={el.id}
-          onClick={() => dispatch(deleteTimer(el.id))}
-          id={el.id}
+          onRemove={() => dispatch(deleteTimer(el.id))}
+          isPaused={el.isPaused}
+          startingTime={el.startingTime}
+          pausingTime={el.pausingTime}
+          timerId={el.id}
           title={el.title}
         />
       ))}

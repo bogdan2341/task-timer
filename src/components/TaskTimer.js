@@ -22,20 +22,23 @@ const msToTime = (ms) => {
 function TaskTimer(props) {
   const classes = useStyles();
   const [time, setTime] = useState(0);
-  const startTime = Date.now();
 
   const runTimer = () => {
-    setTime(Date.now() - startTime);
+    setTime(Date.now() - props.startingTime);
   };
 
   useEffect(() => {
-    const timer = setInterval(() => runTimer(), 100);
+    let timer;
+    if (!props.isPaused) {
+      timer = setInterval(() => runTimer(), 100);
+    } else {
+      clearInterval(timer);
+      setTime(props.pausingTime - props.startingTime);
+    }
     return () => {
-      console.log("Clear", timer);
-
       clearInterval(timer);
     };
-  }, []);
+  }, [props.isPaused]);
   return <div className={classes.root}>{msToTime(time)}</div>;
 }
 
