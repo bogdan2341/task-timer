@@ -4,7 +4,7 @@ const initialState = {
   timers: [],
 };
 
-export default function (state = initialState, { payload, type }) {
+function reducer(state = initialState, { payload, type }) {
   switch (type) {
     case ADD_TASK_TIMER:
       console.log({ timers: [...state.timers, payload] });
@@ -21,3 +21,5 @@ export default function (state = initialState, { payload, type }) {
       return state;
   }
 }
+
+export default reducer;

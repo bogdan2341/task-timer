@@ -1,5 +1,8 @@
+import { Paper } from "@material-ui/core";
 import classes from "./MainLayout.module.css";
 
-export default function ({ children }) {
-  return <div className={classes.Main}>{children}</div>;
+function MainLayout({ children }) {
+  return <Paper className={classes.Main}>{children}</Paper>;
 }
+
+export default MainLayout;
