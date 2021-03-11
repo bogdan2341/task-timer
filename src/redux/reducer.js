@@ -1,4 +1,4 @@
-import { ADD_TASK_TIMER, DELETE_TASK_TIMER } from "./actionTypes";
+import { ADD_TASK_TIMER, DELETE_TASK_TIMER, TOGGLE_PAUSE } from "./actionTypes";
 
 const initialState = {
   timers: [],
@@ -16,6 +16,13 @@ function reducer(state = initialState, { payload, type }) {
       return {
         ...state,
         timers: state.timers.filter((t) => t.id !== payload.id),
+      };
+    case TOGGLE_PAUSE:
+      return {
+        ...state,
+        timers: state.timers.map((t) =>
+          t.id === payload.id ? { ...t, isPaused: !t.isPaused } : t
+        ),
       };
     default:
       return state;
