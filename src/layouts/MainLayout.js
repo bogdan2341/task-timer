@@ -1,5 +1,4 @@
 import { Paper, Typography, makeStyles } from "@material-ui/core";
-import { indigo } from "@material-ui/core/colors";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setTimers } from "../store/actions";
