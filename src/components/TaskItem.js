@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     transition: ".2s ease-in",
   },
   paused: {
-    fontWeight: "bold",
+    color: indigo[200],
     backgroundColor: indigo[50],
     transition: ".2s ease-out",
   },
@@ -38,9 +38,7 @@ function TaskItem(props) {
   };
 
   return (
-    <Paper
-      className={clsx(classes.root, { [classes.paused]: !props.isPaused })}
-    >
+    <Paper className={clsx(classes.root, { [classes.paused]: props.isPaused })}>
       {props.title}
 
       <div>

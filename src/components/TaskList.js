@@ -1,13 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addTimer,
-  deleteTimer,
-  setTimers,
-  togglePause,
-} from "../redux/actions";
+import { deleteTimer } from "../redux/actions";
 import TaskItem from "./TaskItem";
 import { makeStyles, Typography } from "@material-ui/core";
-import { useEffect } from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {

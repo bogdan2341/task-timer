@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function InputNewTask() {
-  const [tittle, setTittle] = useState("");
+  const [title, setTitle] = useState("");
   const dispatch = useDispatch();
   const classes = useStyles();
 
@@ -32,9 +32,9 @@ function InputNewTask() {
   };
 
   const saveTimerHandler = () => {
-    const taskTittle = tittle || `Task#[${moment().format("HH:mm:ss")}]`;
-    setTittle("");
-    return dispatch(addTimer(genUID(), taskTittle, Date.now()));
+    const taskTitle = title || `Task#[${moment().format("HH:mm:ss")}]`;
+    setTitle("");
+    return dispatch(addTimer(genUID(), taskTitle, Date.now()));
   };
 
   return (
@@ -43,8 +43,8 @@ function InputNewTask() {
         variant="outlined"
         className={classes.textField}
         type="text"
-        onChange={(e) => setTittle(e.target.value)}
-        value={tittle}
+        onChange={(e) => setTitle(e.target.value)}
+        value={title}
         label="Task title"
         onKeyPress={keyDownHandler}
       />
