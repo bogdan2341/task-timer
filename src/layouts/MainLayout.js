@@ -36,7 +36,7 @@ function MainLayout({ children }) {
   return (
     <div className={classes.root}>
       <Typography variant="h2" className={classes.logo}>
-        Tasks Timer ⏱
+        Tasks Timer
       </Typography>
 
       <Paper>{children}</Paper>
