@@ -5,8 +5,7 @@ import PlayIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
 import TaskTimer from "./TaskTimer";
 import { useDispatch } from "react-redux";
-import { pauseTimer, resumeTimer } from "../redux/actions";
-import { indigo } from "@material-ui/core/colors";
+import { pauseTimer, resumeTimer } from "../store/actions";
 import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
@@ -19,8 +18,8 @@ const useStyles = makeStyles((theme) => ({
     transition: ".2s ease-in",
   },
   paused: {
-    color: indigo[200],
-    backgroundColor: indigo[50],
+    color: theme.palette.action.disabled,
+    backgroundColor: theme.palette.action.disabledBackground,
     transition: ".2s ease-out",
   },
 }));

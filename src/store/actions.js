@@ -2,7 +2,6 @@ import {
   ADD_TASK_TIMER,
   DELETE_TASK_TIMER,
   SET_TIMERS,
-  TOGGLE_PAUSE,
   PAUSE_TIMER,
   RESUME_TIMER,
 } from "./actionTypes";
@@ -25,16 +24,6 @@ export const deleteTimer = (id) => {
     type: DELETE_TASK_TIMER,
     payload: {
       id,
-    },
-  };
-};
-
-export const togglePause = (id, time) => {
-  return {
-    type: TOGGLE_PAUSE,
-    payload: {
-      id,
-      time,
     },
   };
 };

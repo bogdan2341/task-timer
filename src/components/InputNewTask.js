@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTimer } from "../redux/actions";
+import { addTimer } from "../store/actions";
 import { Button, makeStyles, TextField } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import moment from "moment";

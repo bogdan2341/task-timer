@@ -1,8 +1,8 @@
 import { Paper, Typography, makeStyles } from "@material-ui/core";
-import { blue, indigo } from "@material-ui/core/colors";
+import { indigo } from "@material-ui/core/colors";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setTimers } from "../redux/actions";
+import { setTimers } from "../store/actions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
   },
   logo: {
-    color: indigo[500],
+    color: theme.palette.primary.main,
     fontWeight: "bold",
   },
 }));
@@ -35,9 +35,10 @@ function MainLayout({ children }) {
 
   return (
     <div className={classes.root}>
-      <Typography variant="h3" className={classes.logo}>
-        Tracker
+      <Typography variant="h2" className={classes.logo}>
+        Tasks Timer ⏱
       </Typography>
+
       <Paper>{children}</Paper>
     </div>
   );

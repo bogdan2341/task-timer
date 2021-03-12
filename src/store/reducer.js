@@ -4,7 +4,6 @@ import {
   PAUSE_TIMER,
   RESUME_TIMER,
   SET_TIMERS,
-  TOGGLE_PAUSE,
 } from "./actionTypes";
 
 const initialState = {
