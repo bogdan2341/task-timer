@@ -9,7 +9,6 @@ const genUID = () => Math.random().toString(36).substr(2, 9);
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: theme.spacing(3),
     padding: theme.spacing(2),
     display: "flex",
     justifyContent: "space-between",

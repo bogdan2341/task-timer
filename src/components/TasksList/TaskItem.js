@@ -1,6 +1,6 @@
-import { IconButton, Paper } from "@material-ui/core";
+import { IconButton, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
-import CloseIcon from "@material-ui/icons/Close";
+import DeleteIcon from "@material-ui/icons/Delete";
 import PlayIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
 import TaskTimer from "./TaskTimer";
@@ -10,8 +10,8 @@ import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: theme.spacing(1),
     padding: theme.spacing(2),
+    marginTop: theme.spacing(1),
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
@@ -38,8 +38,7 @@ function TaskItem(props) {
 
   return (
     <Paper className={clsx(classes.root, { [classes.paused]: props.isPaused })}>
-      {props.title}
-
+      <Typography variant="body1">{props.title}</Typography>
       <div>
         <TaskTimer
           startingTime={props.startingTime}
@@ -54,7 +53,7 @@ function TaskItem(props) {
           )}
         </IconButton>
         <IconButton onClick={props.onRemove}>
-          <CloseIcon color="error" />
+          <DeleteIcon color="error" />
         </IconButton>
       </div>
     </Paper>
