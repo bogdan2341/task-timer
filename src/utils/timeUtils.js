@@ -1,7 +1,7 @@
 import moment from "moment";
 
 export const msToTime = (ms) => {
-  let h = moment.duration(ms).hours();
+  let h = Math.floor(moment.duration(ms).asHours());
   let m = moment.duration(ms).minutes();
   let s = moment.duration(ms).seconds();
   h = h < 10 ? "0" + h : h;
