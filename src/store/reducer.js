@@ -1,13 +1,16 @@
 import {
   ADD_TASK_TIMER,
   DELETE_TASK_TIMER,
+  DESTROY_DELETED_TIMER,
   PAUSE_TIMER,
   RESUME_TIMER,
+  SET_DELETED_TIMERS,
   SET_TIMERS,
 } from "./actionTypes";
 
 const initialState = {
   timers: [],
+  deletedTimers: [],
 };
 
 function reducer(state = initialState, { payload, type }) {
@@ -18,10 +21,21 @@ function reducer(state = initialState, { payload, type }) {
         timers: [payload, ...state.timers],
       };
     case DELETE_TASK_TIMER:
-      return {
-        ...state,
-        timers: state.timers.filter((t) => t.id !== payload.id),
-      };
+      const dTimer = state.timers.find((t) => t.id === payload.id);
+      if (dTimer) {
+        return {
+          ...state,
+          timers: state.timers.filter((t) => t.id !== payload.id),
+          deletedTimers: [
+            { ...dTimer, deletingTime: payload.deletingTime },
+            ...state.deletedTimers,
+          ],
+        };
+      } else {
+        return {
+          ...state,
+        };
+      }
     case RESUME_TIMER:
       console.log(state);
       return {
@@ -55,6 +69,16 @@ function reducer(state = initialState, { payload, type }) {
       return {
         ...state,
         timers: payload.timersArray,
+      };
+    case SET_DELETED_TIMERS:
+      return {
+        ...state,
+        deletedTimers: payload.timersArray,
+      };
+    case DESTROY_DELETED_TIMER:
+      return {
+        ...state,
+        deletedTimers: state.deletedTimers.filter((dt) => dt.id !== payload.id),
       };
     default:
       return state;

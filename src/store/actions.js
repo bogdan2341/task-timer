@@ -4,6 +4,8 @@ import {
   SET_TIMERS,
   PAUSE_TIMER,
   RESUME_TIMER,
+  SET_DELETED_TIMERS,
+  DESTROY_DELETED_TIMER,
 } from "./actionTypes";
 
 export const addTimer = (id, title, startingTime) => {
@@ -19,11 +21,12 @@ export const addTimer = (id, title, startingTime) => {
   };
 };
 
-export const deleteTimer = (id) => {
+export const deleteTimer = (id, deletingTime = Date.now()) => {
   return {
     type: DELETE_TASK_TIMER,
     payload: {
       id,
+      deletingTime,
     },
   };
 };
@@ -53,6 +56,24 @@ export const setTimers = (timersArray) => {
     type: SET_TIMERS,
     payload: {
       timersArray,
+    },
+  };
+};
+
+export const setDeletedTimers = (timersArray) => {
+  return {
+    type: SET_DELETED_TIMERS,
+    payload: {
+      timersArray,
+    },
+  };
+};
+
+export const destroyDeletedTimers = (id) => {
+  return {
+    type: DESTROY_DELETED_TIMER,
+    payload: {
+      id,
     },
   };
 };
