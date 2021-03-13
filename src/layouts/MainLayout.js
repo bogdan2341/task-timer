@@ -1,7 +1,18 @@
-import { Paper, Typography, makeStyles } from "@material-ui/core";
-import { useEffect } from "react";
+import { makeStyles, Box } from "@material-ui/core";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setTimers } from "../store/actions";
+import AppBar from "../components/AppBar";
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div hidden={value !== index} {...other}>
+      {value === index && <Box p={3}>{children}</Box>}
+    </div>
+  );
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -10,9 +21,14 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto",
     marginTop: theme.spacing(2),
   },
-  logo: {
-    color: theme.palette.primary.main,
-    fontWeight: "bold",
+  toolbar: {
+    minHeight: 128,
+    alignItems: "flex-start",
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(2),
+  },
+  tabs: {
+    flexGrow: 1,
   },
 }));
 
@@ -20,6 +36,15 @@ function MainLayout({ children }) {
   const timers = useSelector((store) => store.timers);
   const dispatch = useDispatch();
   const classes = useStyles();
+  const [tabValue, setTabValue] = useState(0);
+
+  const tabChangeHandler = (event, newValue) => {
+    setTabValue(newValue);
+  };
+
+  const handleChangeIndex = (index) => {
+    setTabValue(index);
+  };
 
   useEffect(() => {
     const timers = JSON.parse(localStorage.getItem("timers"));
@@ -33,13 +58,15 @@ function MainLayout({ children }) {
   }, [timers]);
 
   return (
-    <div className={classes.root}>
-      <Typography variant="h3" className={classes.logo}>
-        Tasks Timer
-      </Typography>
-
-      <Paper>{children}</Paper>
-    </div>
+    <>
+      <AppBar tabChangeHandler={tabChangeHandler} tabValue={tabValue} />
+      <TabPanel value={tabValue} index={0}>
+        <div className={classes.root}>{children}</div>
+      </TabPanel>
+      <TabPanel value={tabValue} index={1}>
+        "Hello"
+      </TabPanel>
+    </>
   );
 }
 
