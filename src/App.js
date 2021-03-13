@@ -1,7 +1,7 @@
 import { CssBaseline, ThemeProvider } from "@material-ui/core";
 import { Provider } from "react-redux";
-import InputNewTask from "./components/InputNewTask";
-import TaskList from "./components/TaskList";
+import TaskInput from "./components/TaskInput";
+import TasksList from "./components/TasksList";
 import MainLayout from "./layouts/MainLayout";
 import store from "./store";
 import theme from "./theme";
@@ -11,8 +11,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <MainLayout>
-          <InputNewTask />
-          <TaskList />
+          <TaskInput />
+          <TasksList />
         </MainLayout>
       </ThemeProvider>
     </Provider>

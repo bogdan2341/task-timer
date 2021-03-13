@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTimer } from "../store/actions";
-import { Button, makeStyles, TextField } from "@material-ui/core";
+import { addTimer } from "../../store/actions";
+import { Button, makeStyles, Paper, TextField } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import moment from "moment";
 
@@ -9,8 +9,8 @@ const genUID = () => Math.random().toString(36).substr(2, 9);
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: theme.spacing(2),
-    padding: theme.spacing(3),
+    margin: theme.spacing(3),
+    padding: theme.spacing(2),
     display: "flex",
     justifyContent: "space-between",
   },
@@ -38,7 +38,7 @@ function InputNewTask() {
   };
 
   return (
-    <div className={classes.root}>
+    <Paper className={classes.root}>
       <TextField
         variant="outlined"
         className={classes.textField}
@@ -51,7 +51,7 @@ function InputNewTask() {
       <Button onClick={saveTimerHandler} variant="contained" color="primary">
         <AddIcon />
       </Button>
-    </div>
+    </Paper>
   );
 }
 

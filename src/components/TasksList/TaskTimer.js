@@ -1,4 +1,4 @@
-import { msToTime } from "../utils/timeUtils";
+import { msToTime } from "../../utils/timeUtils";
 import { useEffect, useState } from "react";
 
 function TaskTimer(props) {

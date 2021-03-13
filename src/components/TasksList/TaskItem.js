@@ -5,7 +5,7 @@ import PlayIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
 import TaskTimer from "./TaskTimer";
 import { useDispatch } from "react-redux";
-import { pauseTimer, resumeTimer } from "../store/actions";
+import { pauseTimer, resumeTimer } from "../../store/actions";
 import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
