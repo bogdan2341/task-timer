@@ -5,10 +5,10 @@
 In the application, you can write a task title and add it to the top of the list. After that timer of the task run's. You can paused that timer and resume. All information about that timers stored in browser (localStorage). If you restart the browser or turn-of computer, all timers will run after, as if that never turned-of. 
 
 ## Technology stack
-1. React. (views)
-2. Redux. (state management)
-3. Material-UI. (component library)
-4. moment.js. (time utils)
+1. React.
+2. Redux.
+3. Material-UI.
+4. moment.js.
 
 ## Added after
 - Deleted tasks list.
