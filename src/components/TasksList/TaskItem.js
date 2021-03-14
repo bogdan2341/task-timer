@@ -19,7 +19,10 @@ const useStyles = makeStyles((theme) => ({
   },
   paused: {
     color: theme.palette.action.disabled,
-    backgroundColor: theme.palette.grey[100],
+    backgroundColor:
+      theme.palette.type === "dark"
+        ? theme.palette.grey["A700"]
+        : theme.palette.grey[100],
     transition: ".2s ease-out",
   },
 }));
