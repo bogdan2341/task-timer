@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import DeletedTasksList from "../components/TasksList/DeletedTasksList";
 
 function DeletedTasks() {
-  const deletedTimers = useSelector((store) => store.deletedTimers);
+  const deletedTimers = useSelector((store) => store.timersStore.deletedTimers);
 
   return (
     <>

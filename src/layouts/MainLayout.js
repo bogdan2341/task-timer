@@ -1,7 +1,7 @@
 import { makeStyles, Box } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setDeletedTimers, setTimers } from "../store/actions";
+import { setDeletedTimers, setTimers } from "../store/timersReducer/actions";
 import AppBar from "../components/AppBar";
 import CurrentTasksTimers from "../pages/CurrentTasks";
 import DeletedTasks from "../pages/DeletedTasks";
@@ -27,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
 
 function MainLayout({ children }) {
   const dispatch = useDispatch();
-  const timers = useSelector((store) => store.timers);
-  const deletedTimers = useSelector((store) => store.deletedTimers);
+  const timers = useSelector((store) => store.timersStore.timers);
+  const deletedTimers = useSelector((store) => store.timersStore.deletedTimers);
   const classes = useStyles();
   const [tabValue, setTabValue] = useState(0);
 

@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import TaskInput from "../components/TaskInput";
 import TasksList from "../components/TasksList";
 
-function CurrentTasksTimers(props) {
-  const timers = useSelector((store) => store.timers);
+function CurrentTasksTimers() {
+  const timers = useSelector((store) => store.timersStore.timers);
 
   return (
     <>
