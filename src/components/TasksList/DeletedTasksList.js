@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { destroyDeletedTimers } from "../../store/actions";
+import { destroyDeletedTimers } from "../../store/timersReducer/actions";
 import { makeStyles, Typography } from "@material-ui/core";
 import DeletedTaskItem from "./DeletedTaskItem";
 

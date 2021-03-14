@@ -13,7 +13,7 @@ const initialState = {
   deletedTimers: [],
 };
 
-function reducer(state = initialState, { payload, type }) {
+function timersReducer(state = initialState, { payload, type }) {
   switch (type) {
     case ADD_TASK_TIMER:
       return {
@@ -85,4 +85,4 @@ function reducer(state = initialState, { payload, type }) {
   }
 }
 
-export default reducer;
+export default timersReducer;

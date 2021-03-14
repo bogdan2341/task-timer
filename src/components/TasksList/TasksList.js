@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { deleteTimer } from "../../store/actions";
+import { deleteTimer } from "../../store/timersReducer/actions";
 import TaskItem from "./TaskItem";
 import { makeStyles, Typography } from "@material-ui/core";
 
