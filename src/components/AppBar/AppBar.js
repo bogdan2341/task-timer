@@ -8,9 +8,15 @@ import {
 } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import ToggleDarkModeButton from "../ToggleDarkModeButton";
+import TabLabel from "./TabLabel";
 
 function AppBar({ tabValue, tabChangeHandler }) {
   const isDark = useSelector(({ settings }) => settings.isDark);
+  const timers = useSelector(({ timersStore }) => timersStore.timers);
+  const deletedTimers = useSelector(
+    ({ timersStore }) => timersStore.deletedTimers
+  );
+
   const theme = useTheme();
   return (
     <AppBarMUI
@@ -29,8 +35,10 @@ function AppBar({ tabValue, tabChangeHandler }) {
         indicatorColor="secondary"
         centered
       >
-        <Tab label="Current" />
-        <Tab label="Deleted" />
+        <Tab label={<TabLabel count={timers.length} title="Current" />} />
+        <Tab
+          label={<TabLabel count={deletedTimers.length} title="Deleted" />}
+        />
       </Tabs>
     </AppBarMUI>
   );
