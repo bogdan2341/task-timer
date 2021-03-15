@@ -1,9 +1,5 @@
 import { createMuiTheme } from "@material-ui/core";
-import { indigo, purple, lightBlue } from "@material-ui/core/colors";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import store from "./store";
-import { toggleDarkMode } from "./store/settingsReducer/actions";
+import { indigo, purple, pink, amber } from "@material-ui/core/colors";
 
 export function isDark() {}
 
@@ -16,10 +12,10 @@ function useAppTheme(isDark) {
     palette: {
       type: isDark ? "dark" : "light",
       primary: {
-        main: isDark ? indigo[300] : indigo[500],
+        main: isDark ? indigo[400] : indigo[500],
       },
       secondary: {
-        main: purple[200],
+        main: isDark ? indigo[400] : pink["A100"],
       },
     },
   });
