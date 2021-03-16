@@ -36,9 +36,7 @@ function AppBar({ tabValue, tabChangeHandler }) {
         centered
       >
         <Tab label={<TabLabel count={timers.length} title="Current" />} />
-        <Tab
-          label={<TabLabel count={deletedTimers.length} title="Deleted" />}
-        />
+        <Tab label={<TabLabel count={deletedTimers.length} title="Done" />} />
       </Tabs>
     </AppBarMUI>
   );
