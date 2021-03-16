@@ -9,7 +9,7 @@ function TabLabel({ count, title }) {
         <span
           style={{
             backgroundColor: theme.palette.secondary.main,
-            borderRadius: "50%",
+            borderRadius: "1rem",
             padding: ".1em .4em",
             marginLeft: ".4rem",
           }}
