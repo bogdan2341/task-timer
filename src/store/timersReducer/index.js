@@ -45,7 +45,7 @@ function timersReducer(state = initialState, { payload, type }) {
             return {
               ...t,
               isPaused: false,
-              pausingTime: t.pausingTime,
+              pausingTime: 0,
               startingTime: t.startingTime + (payload.time - t.pausingTime),
             };
           } else {
