@@ -21,6 +21,8 @@ function DeletedTasksList(props) {
         onDestroy={() => dispatch(destroyDeletedTimers(el.id))}
         startingTime={el.startingTime}
         deletingTime={el.deletingTime}
+        pausingTime={el.pausingTime}
+        isPaused={el.isPaused}
         timerId={el.id}
         title={el.title}
       />
