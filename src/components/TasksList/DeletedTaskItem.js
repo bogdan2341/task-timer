@@ -2,6 +2,7 @@ import { Card, CardContent, IconButton, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import moment from "moment";
+import { msToTime } from "../../utils/timeUtils";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,21 +18,25 @@ const useStyles = makeStyles((theme) => ({
 
 function DeletedTaskItem(props) {
   const classes = useStyles();
+  let workTime;
+  if (props.isPaused) {
+    workTime = props.pausingTime - props.startingTime;
+  } else {
+    workTime = props.deletingTime - props.startingTime;
+  }
 
   return (
     <Card className={classes.root}>
       <CardContent>
         <Typography color="textSecondary" variant="body2" gutterBottom>
+          Done{" "}
           {moment.duration(-(Date.now() - props.deletingTime)).humanize(true)}
         </Typography>
         <Typography variant="body1">{props.title}</Typography>
+        <Typography color="textSecondary" variant="body2" gutterBottom>
+          {msToTime(workTime)}
+        </Typography>
       </CardContent>
-
-      <div>
-        <IconButton onClick={props.onDestroy}>
-          <RemoveIcon color="error" />
-        </IconButton>
-      </div>
       <IconButton onClick={props.onDestroy}>
         <CloseIcon color="error" />
       </IconButton>
