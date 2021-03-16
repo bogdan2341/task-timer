@@ -11,7 +11,7 @@ In the application, you can write a task title and add it to the top of the list
 4. moment.js.
 
 ## Added after:
-- Deleted tasks list.
+- Done tasks list.
 - Dark theme .
 
 
