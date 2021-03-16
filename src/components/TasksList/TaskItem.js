@@ -1,6 +1,6 @@
 import { IconButton, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
-import DeleteIcon from "@material-ui/icons/Delete";
+import DoneIcon from "@material-ui/icons/Done";
 import PlayIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
 import TaskTimer from "./TaskTimer";
@@ -56,7 +56,7 @@ function TaskItem(props) {
           )}
         </IconButton>
         <IconButton onClick={props.onRemove}>
-          <DeleteIcon color="error" />
+          <DoneIcon color="primary" />
         </IconButton>
       </div>
     </Paper>
