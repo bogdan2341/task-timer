@@ -1,7 +1,6 @@
 import { Card, CardContent, IconButton, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
-import RemoveIcon from "@material-ui/icons/Remove";
-import clsx from "clsx";
+import CloseIcon from "@material-ui/icons/Close";
 import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({
@@ -14,18 +13,13 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     transition: ".2s ease-in",
   },
-  paused: {
-    color: theme.palette.action.disabled,
-    backgroundColor: theme.palette.action.disabledBackground,
-    transition: ".2s ease-out",
-  },
 }));
 
 function DeletedTaskItem(props) {
   const classes = useStyles();
 
   return (
-    <Card className={clsx(classes.root, { [classes.paused]: props.isPaused })}>
+    <Card className={classes.root}>
       <CardContent>
         <Typography color="textSecondary" variant="body2" gutterBottom>
           {moment.duration(-(Date.now() - props.deletingTime)).humanize(true)}
@@ -38,6 +32,9 @@ function DeletedTaskItem(props) {
           <RemoveIcon color="error" />
         </IconButton>
       </div>
+      <IconButton onClick={props.onDestroy}>
+        <CloseIcon color="error" />
+      </IconButton>
     </Card>
   );
 }
