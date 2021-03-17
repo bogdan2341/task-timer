@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTimer } from "../../store/timersReducer/actions";
 import { Button, makeStyles, Paper, TextField } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import moment from "moment";
+import { addTask } from "../../store/tasksReducer/actions";
 
 const genUID = () => Math.random().toString(36).substr(2, 9);
 
@@ -33,7 +33,7 @@ function InputNewTask() {
   const saveTimerHandler = () => {
     const taskTitle = title || `Task#[${moment().format("HH:mm:ss")}]`;
     setTitle("");
-    return dispatch(addTimer(genUID(), taskTitle, Date.now()));
+    return dispatch(addTask(genUID(), taskTitle, Date.now()));
   };
 
   return (

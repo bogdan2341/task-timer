@@ -1,10 +1,10 @@
 import { makeStyles, Box } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setDeletedTimers, setTimers } from "../store/timersReducer/actions";
+import { setDoneTasks, setTasks } from "../store/tasksReducer/actions";
 import AppBar from "../components/AppBar";
 import CurrentTasksTimers from "../pages/CurrentTasks";
-import DeletedTasks from "../pages/DeletedTasks";
+import DoneTasks from "../pages/DoneTasks";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -27,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
 
 function MainLayout({ children }) {
   const dispatch = useDispatch();
-  const timers = useSelector((store) => store.timersStore.timers);
-  const deletedTimers = useSelector((store) => store.timersStore.deletedTimers);
+  const currentTasks = useSelector((store) => store.tasks.currentTasks);
+  const doneTasks = useSelector((store) => store.tasks.doneTasks);
   const classes = useStyles();
   const [tabValue, setTabValue] = useState(0);
 
@@ -37,13 +37,13 @@ function MainLayout({ children }) {
   };
 
   const loadDataFromLocalStorage = () => {
-    const deletedTimers = JSON.parse(localStorage.getItem("deletedTimers"));
-    const timers = JSON.parse(localStorage.getItem("timers"));
-    if (deletedTimers && deletedTimers.length) {
-      dispatch(setDeletedTimers(deletedTimers));
+    const doneTasks = JSON.parse(localStorage.getItem("deletedTimers"));
+    const tasks = JSON.parse(localStorage.getItem("timers"));
+    if (doneTasks && doneTasks.length) {
+      dispatch(setDoneTasks(doneTasks));
     }
-    if (timers && timers.length) {
-      dispatch(setTimers(timers));
+    if (tasks && tasks.length) {
+      dispatch(setTasks(tasks));
     }
   };
 
@@ -52,12 +52,12 @@ function MainLayout({ children }) {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("timers", JSON.stringify(timers));
-  }, [timers]);
+    localStorage.setItem("timers", JSON.stringify(currentTasks));
+  }, [currentTasks]);
 
   useEffect(() => {
-    localStorage.setItem("deletedTimers", JSON.stringify(deletedTimers));
-  }, [deletedTimers]);
+    localStorage.setItem("deletedTimers", JSON.stringify(doneTasks));
+  }, [doneTasks]);
 
   return (
     <>
@@ -67,7 +67,7 @@ function MainLayout({ children }) {
           <CurrentTasksTimers />
         </TabPanel>
         <TabPanel value={tabValue} index={1}>
-          <DeletedTasks />
+          <DoneTasks />
         </TabPanel>
       </div>
     </>

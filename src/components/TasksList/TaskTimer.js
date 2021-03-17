@@ -20,6 +20,7 @@ function TaskTimer(props) {
       clearInterval(timer);
     };
   }, [props.isPaused]);
+  
   return <span>{msToTime(time)}</span>;
 }
 

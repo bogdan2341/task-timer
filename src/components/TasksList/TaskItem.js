@@ -5,8 +5,8 @@ import PlayIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
 import TaskTimer from "./TaskTimer";
 import { useDispatch } from "react-redux";
-import { pauseTimer, resumeTimer } from "../../store/timersReducer/actions";
 import clsx from "clsx";
+import { pauseTask, resumeTask } from "../../store/tasksReducer/actions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,9 +33,9 @@ function TaskItem(props) {
 
   const onPauseHandler = () => {
     if (props.isPaused) {
-      return dispatch(resumeTimer(props.timerId, Date.now()));
+      return dispatch(resumeTask(props.timerId, Date.now()));
     } else {
-      return dispatch(pauseTimer(props.timerId, Date.now()));
+      return dispatch(pauseTask(props.timerId, Date.now()));
     }
   };
 
@@ -55,7 +55,7 @@ function TaskItem(props) {
             <PauseIcon color="primary" />
           )}
         </IconButton>
-        <IconButton onClick={props.onRemove}>
+        <IconButton onClick={props.onDone}>
           <DoneIcon color="primary" />
         </IconButton>
       </div>

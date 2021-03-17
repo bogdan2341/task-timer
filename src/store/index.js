@@ -1,10 +1,10 @@
 import { createStore, combineReducers } from "redux";
-import timersReducer from "./timersReducer";
+import tasksReducer from "./tasksReducer";
 import settingsReducer from "./settingsReducer";
 
 export default createStore(
   combineReducers({
-    timersStore: timersReducer,
+    tasks: tasksReducer,
     settings: settingsReducer,
   })
 );

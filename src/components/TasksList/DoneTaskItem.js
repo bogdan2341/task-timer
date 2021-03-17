@@ -16,13 +16,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function DeletedTaskItem(props) {
+function DoneTaskItem(props) {
   const classes = useStyles();
   let workTime;
   if (props.isPaused) {
     workTime = props.pausingTime - props.startingTime;
   } else {
-    workTime = props.deletingTime - props.startingTime;
+    workTime = props.doneTime - props.startingTime;
   }
 
   return (
@@ -30,18 +30,18 @@ function DeletedTaskItem(props) {
       <CardContent>
         <Typography color="textSecondary" variant="body2" gutterBottom>
           Done{" "}
-          {moment.duration(-(Date.now() - props.deletingTime)).humanize(true)}
+          {moment.duration(-(Date.now() - props.doneTime)).humanize(true)}
         </Typography>
         <Typography variant="body1">{props.title}</Typography>
         <Typography color="textSecondary" variant="body2" gutterBottom>
           {msToTime(workTime)}
         </Typography>
       </CardContent>
-      <IconButton onClick={props.onDestroy}>
+      <IconButton onClick={props.onDelete}>
         <CloseIcon color="error" />
       </IconButton>
     </Card>
   );
 }
 
-export default DeletedTaskItem;
+export default DoneTaskItem;

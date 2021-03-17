@@ -4,13 +4,13 @@ import TaskInput from "../components/TaskInput";
 import TasksList from "../components/TasksList";
 
 function CurrentTasksTimers() {
-  const timers = useSelector((store) => store.timersStore.timers);
+  const currentTasks = useSelector(({tasks}) => tasks.currentTasks);
 
   return (
     <>
       <TaskInput />
-      {timers.length ? (
-        <TasksList timers={timers} />
+      {currentTasks.length ? (
+        <TasksList timers={currentTasks} />
       ) : (
         <Typography
           variant="body1"

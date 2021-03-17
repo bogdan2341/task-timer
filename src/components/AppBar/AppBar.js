@@ -12,10 +12,8 @@ import TabLabel from "./TabLabel";
 
 function AppBar({ tabValue, tabChangeHandler }) {
   const isDark = useSelector(({ settings }) => settings.isDark);
-  const timers = useSelector(({ timersStore }) => timersStore.timers);
-  const deletedTimers = useSelector(
-    ({ timersStore }) => timersStore.deletedTimers
-  );
+  const currentTasks = useSelector(({ tasks }) => tasks.currentTasks);
+  const doneTasks = useSelector(({ tasks }) => tasks.doneTasks);
 
   const theme = useTheme();
   return (
@@ -35,8 +33,8 @@ function AppBar({ tabValue, tabChangeHandler }) {
         indicatorColor="secondary"
         centered
       >
-        <Tab label={<TabLabel count={timers.length} title="Current" />} />
-        <Tab label={<TabLabel count={deletedTimers.length} title="Done" />} />
+        <Tab label={<TabLabel count={currentTasks.length} title="Current" />} />
+        <Tab label={<TabLabel count={doneTasks.length} title="Done" />} />
       </Tabs>
     </AppBarMUI>
   );

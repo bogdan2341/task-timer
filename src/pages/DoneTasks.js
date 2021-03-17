@@ -1,14 +1,14 @@
 import { Typography } from "@material-ui/core";
 import { useSelector } from "react-redux";
-import DeletedTasksList from "../components/TasksList/DeletedTasksList";
+import DoneTasksList from "../components/TasksList/DoneTasksList";
 
-function DeletedTasks() {
-  const deletedTimers = useSelector((store) => store.timersStore.deletedTimers);
+function DoneTasks() {
+  const doneTasks = useSelector(({tasks}) => tasks.doneTasks);
 
   return (
     <>
-      {deletedTimers.length ? (
-        <DeletedTasksList deletedTimers={deletedTimers} />
+      {doneTasks.length ? (
+        <DoneTasksList doneTasks={doneTasks} />
       ) : (
         <Typography
           variant="body1"
@@ -22,4 +22,4 @@ function DeletedTasks() {
   );
 }
 
-export default DeletedTasks;
+export default DoneTasks;
